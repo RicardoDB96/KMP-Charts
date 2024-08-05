@@ -3,6 +3,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -48,6 +49,8 @@ fun App() {
 
       var showLegend by remember { mutableStateOf(false) }
 
+      var showBarValue by remember { mutableStateOf(false) }
+
       val testBarParameters: List<BarParameters> = listOf(
         BarParameters(
           dataName = "1",
@@ -56,7 +59,7 @@ fun App() {
         )
       )
 
-      Row {
+      Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
         Button(onClick = {
           // Modificar un elemento aleatorio de la lista
           val randomIndex = Random.nextInt(data.size)
@@ -69,6 +72,9 @@ fun App() {
         }
         Button(onClick = { showLegend = !showLegend }) {
           Text("Show/Hide legend")
+        }
+        Button(onClick = { showBarValue = !showBarValue }) {
+          Text("Show/Hide bar value")
         }
       }
 
@@ -114,7 +120,8 @@ fun App() {
             legendPosition = if (showLegend) LegendPosition.TOP else LegendPosition.DISAPPEAR,
             barCornerRadius = 4.dp,
             topValue = if (data.max() < 15f) 15f else data.max().toFloat(),
-            goal = 10
+            goal = 10,
+            showBarValue = showBarValue
           )
         }
       }
