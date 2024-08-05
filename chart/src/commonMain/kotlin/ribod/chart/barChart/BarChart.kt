@@ -63,7 +63,8 @@ fun BarChart(
   legendPosition: LegendPosition = ChartDefaultValues.legendPosition,
   barCornerRadius: Dp = ChartDefaultValues.barCornerRadius,
   topValue: Float = chartParameters.flatMap { item -> item.data.map { it.toFloat() } }.maxOrNull() ?: 0f,
-  goal: Int? = null
+  goal: Int? = null,
+  showBarValue: Boolean = false
 ) {
   Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
     when (legendPosition) {
@@ -102,7 +103,8 @@ fun BarChart(
           spaceBetweenGroups = spaceBetweenGroups,
           barCornerRadius = barCornerRadius,
           topValue = topValue,
-          goal = goal
+          goal = goal,
+          showBarValue = showBarValue
         )
       }
 
@@ -126,7 +128,8 @@ fun BarChart(
           modifier = Modifier.weight(1f),
           barCornerRadius = barCornerRadius,
           topValue = topValue,
-          goal = goal
+          goal = goal,
+          showBarValue = showBarValue
         )
 
         LazyRow(
@@ -165,7 +168,8 @@ fun BarChart(
           spaceBetweenGroups = spaceBetweenGroups,
           barCornerRadius = barCornerRadius,
           topValue = topValue,
-          goal = goal
+          goal = goal,
+          showBarValue = showBarValue
         )
       }
     }

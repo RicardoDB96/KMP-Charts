@@ -29,7 +29,8 @@ internal fun DrawScope.drawBarGroups(
   height: Dp,
   animatedProgress: Animatable<Float, AnimationVector1D>,
   barCornerRadius: Dp,
-  textMeasure: TextMeasurer
+  textMeasure: TextMeasurer,
+  showBarValue: Boolean
 ) {
 
   barsParameters.forEachIndexed { barIndex, bar ->
@@ -54,23 +55,25 @@ internal fun DrawScope.drawBarGroups(
         cornerRadius = CornerRadius(barCornerRadius.toPx())
       )
 
-      val textLayoutResult = textMeasure.measure(
-        text = data.toInt().toString(),
-        style = TextStyle(
-          fontSize = 14.sp,
-          fontWeight = FontWeight.Bold,
-          color = Color.White,
-          textAlign = TextAlign.Center
+      if (showBarValue) {
+        val textLayoutResult = textMeasure.measure(
+          text = data.toInt().toString(),
+          style = TextStyle(
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color.White,
+            textAlign = TextAlign.Center
+          )
         )
-      )
 
-      drawText(
-        textLayoutResult = textLayoutResult,
-        topLeft = Offset(
-          x = lengthWithRatio.coerceAtMost(maxWidth).toPx() + (barWidth.toPx() - textLayoutResult.size.width) / 2,
-          y = height.value - barLength.toPx()
+        drawText(
+          textLayoutResult = textLayoutResult,
+          topLeft = Offset(
+            x = lengthWithRatio.coerceAtMost(maxWidth).toPx() + (barWidth.toPx() - textLayoutResult.size.width) / 2,
+            y = height.value - barLength.toPx()
+          )
         )
-      )
+      }
     }
   }
 }

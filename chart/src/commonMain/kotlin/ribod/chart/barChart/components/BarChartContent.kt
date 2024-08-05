@@ -44,7 +44,8 @@ internal fun BarChartContent(
   topValue: Float,
   modifier: Modifier = Modifier,
   barCornerRadius: Dp,
-  goal: Int?
+  goal: Int?,
+  showBarValue: Boolean
 ) {
 
   val textMeasure = rememberTextMeasurer()
@@ -136,7 +137,8 @@ internal fun BarChartContent(
           height = maxHeight.dp,
           animatedProgress = animatedProgress,
           barCornerRadius = barCornerRadius,
-          textMeasure = textMeasure
+          textMeasure = textMeasure,
+          showBarValue = showBarValue
         )
 
         xAxisDrawing(
@@ -162,7 +164,7 @@ internal fun BarChartContent(
 
       delay(400)
       animatedProgress.animateTo(
-        targetValue = 1f, animationSpec = tween(durationMillis = 1000, easing = LinearEasing)
+        targetValue = 1f, animationSpec = tween(durationMillis = 1000, delayMillis = 0)
       )
     }
   }
