@@ -55,7 +55,7 @@ internal fun DrawScope.drawBarGroups(
         cornerRadius = CornerRadius(barCornerRadius.toPx())
       )
 
-      if (showBarValue) {
+      if (showBarValue && data.toInt() != 0) {
         val textLayoutResult = textMeasure.measure(
           text = data.toInt().toString(),
           style = TextStyle(
