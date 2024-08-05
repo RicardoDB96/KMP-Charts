@@ -27,7 +27,8 @@ internal fun <T> DrawScope.baseChartContainer(
   isFromBarChart: Boolean,
   gridOrientation: GridOrientation = GridOrientation.HORIZONTAL,
   xRegionWidth: Dp,
-  goal: Int?
+  goal: Int?,
+  goalColor: Color
 ) {
   if (showXAxis) {
     if (!isFromBarChart) {
@@ -52,7 +53,8 @@ internal fun <T> DrawScope.baseChartContainer(
       yAxisRange = yAxisRange,
       specialChart = specialChart,
       isFromBarChart = isFromBarChart,
-      goal = goal
+      goal = goal,
+      goalColor = goalColor
     )
   }
 
@@ -69,6 +71,7 @@ internal fun <T> DrawScope.baseChartContainer(
     gridOrientation = gridOrientation,
     xAxisDataSize = xAxisData.size,
     xRegionWidth = xRegionWidth,
-    goal = goal
+    goal = goal,
+    goalColor = goalColor
   )
 }

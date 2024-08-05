@@ -27,7 +27,8 @@ internal fun DrawScope.grid(
   textMeasurer: TextMeasurer,
   gridOrientation: GridOrientation,
   xRegionWidth: Dp,
-  goal: Int?
+  goal: Int?,
+  goalColor: Color
 ) {
   if (specialChart) {
     return
@@ -48,7 +49,8 @@ internal fun DrawScope.grid(
         showGridWithSpacer = showGridWithSpacer,
         yTextLayoutResult = textSpace,
         upperValue = upperValue,
-        goal = goal
+        goal = goal,
+        goalColor = goalColor
       )
 
       GridOrientation.VERTICAL -> drawVerticalGrid(
@@ -69,7 +71,8 @@ internal fun DrawScope.grid(
           showGridWithSpacer = showGridWithSpacer,
           yTextLayoutResult = textSpace,
           upperValue = upperValue,
-          goal = goal
+          goal = goal,
+          goalColor = goalColor
         )
 
         drawVerticalGrid(
@@ -94,7 +97,8 @@ private fun DrawScope.drawHorizontalGrid(
   showGridWithSpacer: Boolean,
   upperValue: Float,
   yTextLayoutResult: Int,
-  goal: Int?
+  goal: Int?,
+  goalColor: Color
 ) {
 
   val xAxisMaxValue = size.width
@@ -142,7 +146,7 @@ private fun DrawScope.drawHorizontalGrid(
 
   if (goal != null) {
     drawGrid(
-      gridColor = Color(0xFFD4AF37),
+      gridColor = goalColor,
       xStart = (yTextLayoutResult * 1.5.toFloat().toDp()).toPx(),
       yStart = goalYAlignmentValue,
       xEnd = xAxisMaxValue - (textSpace / 0.9.toFloat().toDp().toPx()),

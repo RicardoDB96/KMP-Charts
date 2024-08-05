@@ -45,7 +45,8 @@ internal fun BarChartContent(
   modifier: Modifier = Modifier,
   barCornerRadius: Dp,
   goal: Int?,
-  showBarValue: Boolean
+  showBarValue: Boolean,
+  goalColor: Color
 ) {
 
   val textMeasure = rememberTextMeasurer()
@@ -110,7 +111,8 @@ internal fun BarChartContent(
         showYAxis = showYAxis,
         isFromBarChart = true,
         xRegionWidth = xRegionWidth,
-        goal = goal
+        goal = goal,
+        goalColor = goalColor
       )
     }
 

@@ -64,7 +64,8 @@ fun BarChart(
   barCornerRadius: Dp = ChartDefaultValues.barCornerRadius,
   topValue: Float = chartParameters.flatMap { item -> item.data.map { it.toFloat() } }.maxOrNull() ?: 0f,
   goal: Int? = null,
-  showBarValue: Boolean = false
+  showBarValue: Boolean = false,
+  goalColor: Color = Color(0xFFD4AF37)
 ) {
   Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
     when (legendPosition) {
@@ -104,7 +105,8 @@ fun BarChart(
           barCornerRadius = barCornerRadius,
           topValue = topValue,
           goal = goal,
-          showBarValue = showBarValue
+          showBarValue = showBarValue,
+          goalColor = goalColor
         )
       }
 
@@ -129,6 +131,7 @@ fun BarChart(
           barCornerRadius = barCornerRadius,
           topValue = topValue,
           goal = goal,
+          goalColor = goalColor,
           showBarValue = showBarValue
         )
 
@@ -169,6 +172,7 @@ fun BarChart(
           barCornerRadius = barCornerRadius,
           topValue = topValue,
           goal = goal,
+          goalColor = goalColor,
           showBarValue = showBarValue
         )
       }

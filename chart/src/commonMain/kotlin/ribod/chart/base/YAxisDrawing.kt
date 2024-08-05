@@ -23,7 +23,8 @@ internal fun DrawScope.yAxisDrawing(
   yAxisRange: Int,
   specialChart: Boolean,
   isFromBarChart: Boolean,
-  goal: Int?
+  goal: Int?,
+  goalColor: Color
 ) {
   if (specialChart) {
     return
@@ -40,7 +41,7 @@ internal fun DrawScope.yAxisDrawing(
       drawText(
         textMeasurer = textMeasure,
         text = (dataRange / upperValue * range).roundToInt().toString(),
-        style = yAxisStyle.copy(color = Color(0xFFD4AF37)),
+        style = yAxisStyle.copy(color = goalColor),
         topLeft = Offset(0f, y.toPx())
       )
       // Paint top
