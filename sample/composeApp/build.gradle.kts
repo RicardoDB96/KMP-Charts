@@ -44,7 +44,8 @@ kotlin {
       implementation(compose.ui)
       implementation(compose.components.resources)
       implementation(compose.components.uiToolingPreview)
-      implementation("com.ribod.charts:chart:1.0.0")
+      //implementation("com.ribod.charts:chart:1.0.0")
+      implementation(project(":chart"))
     }
     desktopMain.dependencies {
       implementation(compose.desktop.currentOs)

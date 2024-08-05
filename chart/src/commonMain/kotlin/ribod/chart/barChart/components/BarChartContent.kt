@@ -135,7 +135,8 @@ internal fun BarChartContent(
           maxWidth = maxWidth,
           height = maxHeight.dp,
           animatedProgress = animatedProgress,
-          barCornerRadius = barCornerRadius
+          barCornerRadius = barCornerRadius,
+          textMeasure = textMeasure
         )
 
         xAxisDrawing(
@@ -154,7 +155,6 @@ internal fun BarChartContent(
 
   LaunchedEffect(barsParameters, animateChart) {
     if (animateChart) {
-
       collectToSnapShotFlow(barsParameters) {
         upperValue = if (it.getUpperValue() > topValue) it.getUpperValue() else topValue.toDouble()
         lowerValue = it.getLowerValue()
