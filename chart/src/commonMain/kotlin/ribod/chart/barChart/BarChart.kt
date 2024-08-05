@@ -43,6 +43,7 @@ import ribod.chart.utils.ChartDefaultValues
  */
 @Composable
 fun BarChart(
+  modifier: Modifier = Modifier,
   chartParameters: List<BarParameters> = ChartDefaultValues.barParameters,
   gridColor: Color = ChartDefaultValues.gridColor,
   xAxisData: List<String> = emptyList(),
@@ -67,7 +68,7 @@ fun BarChart(
   showBarValue: Boolean = false,
   goalColor: Color = Color(0xFFD4AF37)
 ) {
-  Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+  Column(modifier, verticalArrangement = Arrangement.spacedBy(8.dp)) {
     when (legendPosition) {
       LegendPosition.TOP -> {
         LazyRow(
