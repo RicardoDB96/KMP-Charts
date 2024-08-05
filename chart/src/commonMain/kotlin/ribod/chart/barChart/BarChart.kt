@@ -43,6 +43,7 @@ import ribod.chart.utils.ChartDefaultValues
  */
 @Composable
 fun BarChart(
+  modifier: Modifier = Modifier,
   chartParameters: List<BarParameters> = ChartDefaultValues.barParameters,
   gridColor: Color = ChartDefaultValues.gridColor,
   xAxisData: List<String> = emptyList(),
@@ -154,6 +155,7 @@ fun BarChart(
 
       LegendPosition.DISAPPEAR -> {
         BarChartContent(
+          modifier = modifier,
           barsParameters = chartParameters,
           gridColor = gridColor,
           xAxisData = xAxisData,

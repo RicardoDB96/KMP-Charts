@@ -78,8 +78,9 @@ fun App() {
       }
 
       if (isVisible) {
-        Box(Modifier.fillMaxSize().padding(24.dp)) {
+        Box(Modifier.fillMaxSize()) {
           BarChart(
+            modifier = Modifier.padding(bottom = 0.dp),
             chartParameters = testBarParameters,
             gridColor = Color.DarkGray,
             xAxisData = listOf(
