@@ -30,7 +30,10 @@ internal fun DrawScope.drawBarGroups(
   animatedProgress: Animatable<Float, AnimationVector1D>,
   barCornerRadius: Dp,
   textMeasure: TextMeasurer,
-  showBarValue: Boolean
+  showBarValue: Boolean,
+  goal: Int?,
+  goalColor: Color?,
+  isColorAdaptive: Boolean
 ) {
 
   barsParameters.forEachIndexed { barIndex, bar ->
@@ -42,8 +45,18 @@ internal fun DrawScope.drawBarGroups(
       val xAxisLength = (index * xRegionWidth).coerceAtLeast(0.dp)
       val lengthWithRatio = (xAxisLength + (barIndex * (barWidth + spaceBetweenBars))).coerceAtLeast(0.dp)
 
+
+      val barColor = if (goal != null && isColorAdaptive) when {
+        data.toInt() < goal -> bar.underGoal
+        data.toInt() == goal -> goalColor ?: bar.barColor
+        data.toInt() > goal -> bar.barColor
+        else -> bar.barColor
+      } else {
+        bar.barColor
+      }
+
       drawRoundRect(
-        brush = Brush.verticalGradient(listOf(bar.barColor, bar.barColor)),
+        brush = Brush.verticalGradient(listOf(barColor, barColor)),
         topLeft = Offset(
           lengthWithRatio.coerceAtMost(maxWidth).toPx(),
           height.value - barLength.toPx()

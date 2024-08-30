@@ -66,7 +66,8 @@ fun BarChart(
   topValue: Float = chartParameters.flatMap { item -> item.data.map { it.toFloat() } }.maxOrNull() ?: 0f,
   goal: Int? = null,
   showBarValue: Boolean = false,
-  goalColor: Color = Color(0xFFD4AF37)
+  goalColor: Color = Color(0xFFD4AF37),
+  isColorAdaptive: Boolean = false
 ) {
   Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
     when (legendPosition) {
@@ -107,7 +108,8 @@ fun BarChart(
           topValue = topValue,
           goal = goal,
           showBarValue = showBarValue,
-          goalColor = goalColor
+          goalColor = goalColor,
+          isColorAdaptive = isColorAdaptive
         )
       }
 
@@ -133,7 +135,8 @@ fun BarChart(
           topValue = topValue,
           goal = goal,
           goalColor = goalColor,
-          showBarValue = showBarValue
+          showBarValue = showBarValue,
+          isColorAdaptive = isColorAdaptive
         )
 
         LazyRow(
@@ -175,7 +178,8 @@ fun BarChart(
           topValue = topValue,
           goal = goal,
           goalColor = goalColor,
-          showBarValue = showBarValue
+          showBarValue = showBarValue,
+          isColorAdaptive = isColorAdaptive
         )
       }
     }

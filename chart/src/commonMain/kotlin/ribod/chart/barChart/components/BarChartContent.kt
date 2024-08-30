@@ -46,7 +46,8 @@ internal fun BarChartContent(
   barCornerRadius: Dp,
   goal: Int?,
   showBarValue: Boolean,
-  goalColor: Color
+  goalColor: Color,
+  isColorAdaptive: Boolean
 ) {
 
   val textMeasure = rememberTextMeasurer()
@@ -140,7 +141,10 @@ internal fun BarChartContent(
           animatedProgress = animatedProgress,
           barCornerRadius = barCornerRadius,
           textMeasure = textMeasure,
-          showBarValue = showBarValue
+          showBarValue = showBarValue,
+          goal = goal,
+          goalColor = goalColor,
+          isColorAdaptive = isColorAdaptive
         )
 
         xAxisDrawing(
