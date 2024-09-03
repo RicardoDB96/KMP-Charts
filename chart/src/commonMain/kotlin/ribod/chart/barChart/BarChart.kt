@@ -67,7 +67,8 @@ fun BarChart(
   goal: Int? = null,
   showBarValue: Boolean = false,
   goalColor: Color = Color(0xFFD4AF37),
-  isColorAdaptive: Boolean = false
+  isColorAdaptive: Boolean = false,
+  barPercentage: Int = 0
 ) {
   Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
     when (legendPosition) {
@@ -109,7 +110,8 @@ fun BarChart(
           goal = goal,
           showBarValue = showBarValue,
           goalColor = goalColor,
-          isColorAdaptive = isColorAdaptive
+          isColorAdaptive = isColorAdaptive,
+          barPercentage = barPercentage
         )
       }
 
@@ -136,7 +138,8 @@ fun BarChart(
           goal = goal,
           goalColor = goalColor,
           showBarValue = showBarValue,
-          isColorAdaptive = isColorAdaptive
+          isColorAdaptive = isColorAdaptive,
+          barPercentage = barPercentage
         )
 
         LazyRow(
@@ -179,7 +182,8 @@ fun BarChart(
           goal = goal,
           goalColor = goalColor,
           showBarValue = showBarValue,
-          isColorAdaptive = isColorAdaptive
+          isColorAdaptive = isColorAdaptive,
+          barPercentage = barPercentage
         )
       }
     }

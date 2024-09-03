@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.times
 import ribod.chart.barChart.model.BarParameters
+import kotlin.math.roundToInt
 
 internal fun DrawScope.drawBarGroups(
   barsParameters: List<BarParameters>,
@@ -33,7 +34,8 @@ internal fun DrawScope.drawBarGroups(
   showBarValue: Boolean,
   goal: Int?,
   goalColor: Color?,
-  isColorAdaptive: Boolean
+  isColorAdaptive: Boolean,
+  barPercentage: Int
 ) {
 
   barsParameters.forEachIndexed { barIndex, bar ->
@@ -45,11 +47,13 @@ internal fun DrawScope.drawBarGroups(
       val xAxisLength = (index * xRegionWidth).coerceAtLeast(0.dp)
       val lengthWithRatio = (xAxisLength + (barIndex * (barWidth + spaceBetweenBars))).coerceAtLeast(0.dp)
 
+      val percentage = ((goal ?: 0).toFloat() * (barPercentage.toFloat() / 100)).roundToInt()
 
       val barColor = if (goal != null && isColorAdaptive) when {
-        data.toInt() < goal -> bar.underGoal
-        data.toInt() == goal -> goalColor ?: bar.barColor
-        data.toInt() > goal -> bar.barColor
+        data.toInt() < (goal - percentage) -> bar.lowGoal
+        data.toInt() in (goal - percentage)..goal -> goalColor ?: bar.barColor
+        data.toInt() in goal..(goal + percentage) -> bar.overGoal
+        data.toInt() > (goal + percentage) -> bar.barColor
         else -> bar.barColor
       } else {
         bar.barColor

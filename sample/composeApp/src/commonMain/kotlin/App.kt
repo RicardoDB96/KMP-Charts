@@ -50,11 +50,13 @@ fun App() {
 
       var showBarValue by remember { mutableStateOf(false) }
 
+      var isAdaptiveBar by remember { mutableStateOf(false) }
+
       val testBarParameters: List<BarParameters> = listOf(
         BarParameters(
           dataName = "1",
           data = data,
-          barColor = Color.Blue,
+          barColor = Color.Blue
         )
       )
 
@@ -74,6 +76,9 @@ fun App() {
         }
         Button(onClick = { showBarValue = !showBarValue }) {
           Text("Show/Hide bar value")
+        }
+        Button(onClick = { isAdaptiveBar = !isAdaptiveBar }) {
+          Text("Show/Hide adaptive color bar")
         }
       }
 
@@ -121,7 +126,9 @@ fun App() {
             barCornerRadius = 4.dp,
             topValue = if (data.max() < 15f) 15f else data.max().toFloat(),
             goal = 10,
-            showBarValue = showBarValue
+            showBarValue = showBarValue,
+            isColorAdaptive = isAdaptiveBar,
+            barPercentage = 15
           )
         }
       }
